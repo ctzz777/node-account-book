@@ -9,14 +9,13 @@ const User = new mongoose.Schema({
 
 User.pre('save', function(next) {
   const user = this;
-
   if(user.isModified('password')) {
-      bcrypt.genSalt(10, (err, salt) => {
-          bcrypt.hash(user.password, salt, (err, hash) => {
-              user.password = hash;
-              next();
-          });
+    bcrypt.genSalt(10, (err, salt) => {
+      bcrypt.hash(user.password, salt, (err, hash) => {
+        user.password = hash;
+        next();
       });
+    });
   } else {
       next();
   }
@@ -24,7 +23,6 @@ User.pre('save', function(next) {
 
 User.methods.validatePassword = function (password) {
   const user = this;
-
   return new Promise((resolve, reject) => {
     bcrypt.compare(password, user.password, (err, isMatch) => {
       if (err) { 
@@ -37,7 +35,6 @@ User.methods.validatePassword = function (password) {
 
 User.methods.generateToken = function () {
   const user = this;
-
   return jwt.sign({ id: user.id }, process.env.JWT_KEY, { expiresIn: process.env.JWT_TIMEOUT });
 };
 
