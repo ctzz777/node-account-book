@@ -22,6 +22,14 @@ User.pre('save', function(next) {
   }
 });
 
+User.method('toJSON', function () {
+  const user = this.toObject();
+  delete user.password;
+  delete user._id;
+  delete user.__v;
+  return user;
+});
+
 User.methods.validatePassword = function (password) {
   const user = this;
   return new Promise((resolve, reject) => {

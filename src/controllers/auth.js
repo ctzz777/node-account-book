@@ -5,10 +5,9 @@ class AuthController {
     return passport.authenticate('local',
       (err, user, info, status) => {
         if (user) {
-          const username = user.username;
           const token = user.generateToken();
           ctx.body = {
-            username,
+            user,
             token,
           };
         } else {
@@ -21,9 +20,8 @@ class AuthController {
     return passport.authenticate('jwt',
       (err, user, info, status) => {
         if (user) {
-          const username = user.username;
           ctx.body = {
-            username,
+            user,
           };
         } else {
           ctx.throw(401);
