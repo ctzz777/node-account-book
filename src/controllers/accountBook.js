@@ -1,6 +1,11 @@
+const AccountBook = require('../models/accountBook');
+
 class AccountBookController {
   async findAccountBook(ctx) {
-    ctx.body = ctx.state.user;
+    const accountBook = await AccountBook.find({
+      userId: ctx.state.user._id,
+    });
+    ctx.body = accountBook;
   }
 }
 
