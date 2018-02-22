@@ -5,7 +5,7 @@ const Account = new Schema({
   category: {type: Schema.Types.ObjectId, ref: 'Category', required: true},
   description: {type: String, default: ''},
   amount: {type: Number, default: 0},
-  createAt: {type: Date, default: Date.now},
+  createdAt: {type: Date, default: Date.now},
 });
 
 module.exports = mongoose.model('Account', Account, 'Account');
