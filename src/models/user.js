@@ -2,13 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const AccountBook = require('./accountBook');
 
 const User = new Schema({
   username: {type: String, required: true, unique: true},
   password: {type: String, required: true},
 });
 
-User.pre('save', function(next) {
+User.pre('save', function (next) {
   const user = this;
   if(user.isModified('password')) {
     bcrypt.genSalt(10, (err, salt) => {
@@ -22,6 +23,12 @@ User.pre('save', function(next) {
   }
 });
 
+User.post('save', async function (user) {
+  const accountBook = await new AccountBook({
+    userId: user._id,
+  }).save();
+});
+
 User.method('toJSON', function () {
   const user = this.toObject();
   delete user.password;
@@ -29,6 +36,16 @@ User.method('toJSON', function () {
   delete user.__v;
   return user;
 });
+
+User.statics.findByUsernameOrCreate = async function (username, password) {
+  const User = this;
+  const exist = await User.findOne({username});
+  if(!exist) {
+    const user = await new User({username, password}).save();
+    return user;
+  }
+  return exist;
+};
 
 User.methods.validatePassword = function (password) {
   const user = this;

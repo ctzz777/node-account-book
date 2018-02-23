@@ -4,6 +4,8 @@
     "JWT_TIMEOUT": "9000000",
     "SESSION_KEY": "55688",
     "SERVER_PORT": "3001",
-    "DB_URI": "mongodb://localhost/accountdb"
+    "DB_URI": "mongodb://localhost/accountdb",
+    "GOOGLE_CLIENT_ID": "",
+    "GOOGLE_CLIENT_SECRET": ""
   }
 }

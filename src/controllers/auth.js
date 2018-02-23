@@ -28,6 +28,20 @@ class AuthController {
         }
       })(ctx);
   }
+
+  async googleCallback(ctx) {
+    const user = ctx.state.user;
+    if (user) {
+      const token = user.generateToken();
+      console.log(user);
+      ctx.body = {
+        user,
+        token,
+      };
+    } else {
+      ctx.throw(401);
+    }
+  }
 }
 
 module.exports = new AuthController();
