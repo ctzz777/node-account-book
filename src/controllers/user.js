@@ -5,10 +5,7 @@ class UserController {
   async addUser(ctx) {
     console.log(ctx.request.body);
     const user = await new User(ctx.request.body).save();
-    const accountBook = await new AccountBook({
-      userId: user._id,
-    }).save();
-    ctx.body = accountBook;
+    ctx.body = user;
   }
 }
 
