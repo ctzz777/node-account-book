@@ -8,11 +8,4 @@ const AccountBook = new Schema({
   routines: [{type: Schema.Types.ObjectId, ref: 'Routine', required: true}],
 });
 
-AccountBook.method('toJSON', function () {
-  const accountBook = this.toObject();
-  delete accountBook.userId;
-  delete accountBook.__v;
-  return accountBook;
-});
-
 module.exports = mongoose.model('AccountBook', AccountBook, 'AccountBook');
