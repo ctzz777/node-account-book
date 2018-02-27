@@ -5,7 +5,7 @@
     "SESSION_KEY": "55688",
     "SERVER_PORT": "3001",
     "DB_URI": "mongodb://localhost/accountdb",
-    "GOOGLE_CLIENT_ID": "",
-    "GOOGLE_CLIENT_SECRET": ""
+    "GOOGLE_CLIENT_ID": "1048251713190-u99ejuqk1kl0mnpka2im0i6psbugeqba.apps.googleusercontent.com",
+    "GOOGLE_CLIENT_SECRET": "1n9PUjigwZ4UmhJQFe-V1bT2"
   }
 }
