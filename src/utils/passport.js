@@ -60,9 +60,7 @@ passport.use(new GoogleStrategy({
     callbackURL: `http://localhost:${process.env.SERVER_PORT}/auth/google/callback`
   }, async (accessToken, refreshToken, profile, cb) => {
       const username = profile.emails[0].value;
-      const password = profile.id;
-      console.log(password);
-      const user = await User.findByUsernameOrCreate(username, password);
+      const user = await User.findByUsernameOrCreate(username);
       if (user) {
         return cb(null, user);
       } else {

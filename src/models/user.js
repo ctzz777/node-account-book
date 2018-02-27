@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
+const crypto = require('crypto');
 const AccountBook = require('./accountBook');
 
 const User = new Schema({
@@ -37,10 +38,11 @@ User.method('toJSON', function () {
   return user;
 });
 
-User.statics.findByUsernameOrCreate = async function (username, password) {
+User.statics.findByUsernameOrCreate = async function (username) {
   const User = this;
   const exist = await User.findOne({username});
   if(!exist) {
+    const password = crypto.randomBytes(128).toString('hex');
     const user = await new User({username, password}).save();
     return user;
   }
