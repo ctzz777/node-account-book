@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Routine = new Schema({
-  accountElement: {type: Schema.Types.ObjectId, ref: 'AccountTemplate', required: true},
+  accountTemplate: {type: Schema.Types.ObjectId, ref: 'AccountTemplate', required: true},
   frequency: [{type: String, enum: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']}],
 });
 
