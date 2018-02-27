@@ -1,7 +1,12 @@
 const AccountBook = require('../models/accountBook');
 
 class AccountBookController {
-  async find(ctx) {
+  async findAll(ctx) {
+    const accountBook = await AccountBook.find({});
+    ctx.body = accountBook;
+  }
+
+  async findByUser(ctx) {
     const accountBook = await AccountBook.findOne({
       userId: ctx.state.user._id,
     });
