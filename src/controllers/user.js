@@ -3,7 +3,6 @@ const AccountBook = require('../models/accountBook');
 
 class UserController {
   async save(ctx) {
-    console.log(ctx.request.body);
     const user = await new User(ctx.request.body).save();
     ctx.body = user;
   }
