@@ -29,6 +29,7 @@ class AccountBookController {
       }
     }, {
       new: true,
+      runValidators: true,
     });
     ctx.body = accountBook;
   }
@@ -44,7 +45,8 @@ class AccountBookController {
         }
       }
     }, {
-      new: true
+      new: true,
+      runValidators: true,
     });
     ctx.body = accountBook;
   }

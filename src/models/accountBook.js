@@ -9,7 +9,7 @@ const AccountTemplate = new Schema({
 
 const Routine = new Schema({
   accountTemplate: {type: AccountTemplate, required: true},
-  frequency: [{type: String, enum: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']}],
+  frequency: [{type: String, enum: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], required: true}],
 });
 
 const AccountBook = new Schema({
