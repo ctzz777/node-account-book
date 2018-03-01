@@ -19,6 +19,35 @@ class AccountBookController {
     ctx.body = accountBook;
 
   }
+
+  async addRoutine(ctx) {
+    const id = ctx.params.id;
+    const routine = ctx.request.body;
+    const accountBook = await AccountBook.findByIdAndUpdate(id, {
+      $push: {
+        routines: routine,
+      }
+    }, {
+      new: true,
+    });
+    ctx.body = accountBook;
+  }
+
+  async removeRoutine(ctx) {
+    const id = ctx.params.id;
+    const routineId = ctx.params.routineId;
+    console.log(routineId);
+    const accountBook = await AccountBook.findByIdAndUpdate(id, {
+      $pull: {
+        routines: {
+          _id: routineId,
+        }
+      }
+    }, {
+      new: true
+    });
+    ctx.body = accountBook;
+  }
 }
 
 module.exports = new AccountBookController();
