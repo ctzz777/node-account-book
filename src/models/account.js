@@ -8,7 +8,7 @@ const Account = new Schema({
     type: String,
     validate: {
       validator: function (v) {
-        return moment(v, "YYYYMMDD").isValid();
+        return moment(v, "YYYYMMDD", true).isValid();
       },
       message: '{VALUE} is not in the valid format: YYYYMMDD'
     }, 

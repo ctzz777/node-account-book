@@ -6,11 +6,13 @@ const handleError = () => {
       await next();
     } catch (err) {
       ctx.status = err.status || 500;
-      logger.error(err.stack);
+      code = ctx.status;
+      message = err.message;
       ctx.body = {
-        code: err.code,
-        message: err.message,
+        code,
+        message,
       }
+      logger.error(err.stack);
       ctx.app.emit('error', err, ctx);
     }
   };
