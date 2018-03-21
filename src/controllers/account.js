@@ -33,7 +33,7 @@ class AccountController {
   async updateById(ctx) {
     const id = ctx.params.id;
     const update = ctx.request.body;
-    const account = await Account.findByIdAndUpdate(id, update);
+    const account = await Account.findByIdAndUpdate(id, update, {new: true});
     if (!account) {
       ctx.throw(404);
     }
