@@ -20,6 +20,34 @@ class AccountController {
     });
     ctx.body = accounts;
   }
+
+  async findById(ctx) {
+    const id = ctx.params.id;
+    const account = await Account.findById(id);
+    if (!account) {
+      ctx.throw(404);
+    }
+    ctx.body = account;
+  }
+
+  async updateById(ctx) {
+    const id = ctx.params.id;
+    const update = ctx.request.body;
+    const account = await Account.findByIdAndUpdate(id, update);
+    if (!account) {
+      ctx.throw(404);
+    }
+    ctx.body = account;
+  }
+
+  async removeById(ctx) {
+    const id = ctx.params.id;
+    const account = await Account.findByIdAndRemove(id);
+    if (!account) {
+      ctx.throw(404);
+    }
+    ctx.body = account;
+  }
 }
 
 module.exports = new AccountController();
