@@ -7,6 +7,10 @@ const handleError = () => {
     } catch (err) {
       ctx.status = err.status || 500;
       logger.error(err.stack);
+      ctx.body = {
+        code: err.code,
+        message: err.message,
+      }
       ctx.app.emit('error', err, ctx);
     }
   };
