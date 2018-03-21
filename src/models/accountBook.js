@@ -10,6 +10,7 @@ const AccountItem = new Schema({
 const Routine = new Schema({
   accountItem: {type: AccountItem, required: true},
   frequency: [{type: String, enum: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'], required: true}],
+  history: [{type: String, required: true}],
 });
 
 const AccountBook = new Schema({

@@ -37,7 +37,6 @@ class AccountBookController {
   async removeRoutine(ctx) {
     const id = ctx.params.id;
     const routineId = ctx.params.routineId;
-    console.log(routineId);
     const accountBook = await AccountBook.findByIdAndUpdate(id, {
       $pull: {
         routines: {

@@ -11,7 +11,7 @@ const Account = new Schema({
         return moment(v, "YYYYMMDD", true).isValid();
       },
       message: '{VALUE} is not in the valid format: YYYYMMDD'
-    }, 
+    },
     required: true
   },
   category: {type: Schema.Types.ObjectId, ref: 'Category', required: true},
