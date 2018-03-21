@@ -20,4 +20,13 @@ const Account = new Schema({
   createdAt: {type: Date, default: Date.now},
 });
 
+const autoPopulate = function(next) {
+  this.populate('category');
+  next();
+};
+
+Account
+  .pre('findOne', autoPopulate)
+  .pre('find', autoPopulate);
+
 module.exports = mongoose.model('Account', Account, 'Account');
