@@ -49,6 +49,36 @@ class AccountBookController {
     });
     ctx.body = accountBook;
   }
+
+  async addCommon(ctx) {
+    const id = ctx.params.id;
+    const common = ctx.request.body;
+    const accountBook = await AccountBook.findByIdAndUpdate(id, {
+      $push: {
+        commons: common,
+      }
+    }, {
+      new: true,
+      runValidators: true,
+    });
+    ctx.body = accountBook;
+  }
+
+  async removeCommon(ctx) {
+    const id = ctx.params.id;
+    const commonId = ctx.params.commonId;
+    const accountBook = await AccountBook.findByIdAndUpdate(id, {
+      $pull: {
+        commons: {
+          _id: commonId,
+        }
+      }
+    }, {
+      new: true,
+      runValidators: true,
+    });
+    ctx.body = accountBook;
+  }
 }
 
 module.exports = new AccountBookController();
