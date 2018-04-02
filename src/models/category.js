@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const Category = new Schema({
   name: {type: String, required: true, unique: true},
-  imgUrl: {type: String, default: ''},
+  icon: {type: String, default: ''}, // semantic-ui icon name
 });
 
 module.exports = mongoose.model('Category', Category, 'Category');
