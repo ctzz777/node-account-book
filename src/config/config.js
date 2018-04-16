@@ -1,7 +1,7 @@
 const env = process.env.NODE_ENV || 'development';
 console.log(`NODE_ENV: ${env}`);
 
-if(env === 'development' || env === 'test') {
+if(env === 'development' || env === 'test' || env === 'production') {
   const config = require('./config.json');
   const envConfig = config[env];
 
