@@ -7,7 +7,7 @@ const User = require('../models/user');
 const opts = {};
 opts.jwtFromRequest = ExtractJwt.fromAuthHeaderAsBearerToken();
 opts.secretOrKey = process.env.JWT_KEY;
-console.log(process.env);
+
 passport.serializeUser((user, done) => {
   done(null, user.id);
 });

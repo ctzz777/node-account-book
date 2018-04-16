@@ -29,4 +29,4 @@ app.use(passport.session());
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-server.listen(process.env.SERVER_PORT);
+server.listen(process.env.PORT || process.env.SERVER_PORT);
