@@ -18,6 +18,7 @@ const Account = new Schema({
   description: {type: String, default: ''},
   amount: {type: Number, default: 0},
   createdAt: {type: Date, default: Date.now},
+  rating: {type: Number, default: 0},
 });
 
 const autoPopulate = function(next) {

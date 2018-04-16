@@ -5,6 +5,7 @@ const AccountItem = new Schema({
   category: {type: Schema.Types.ObjectId, ref: 'Category', required: true},
   description: {type: String, default: ''},
   amount: {type: Number, default: 0},
+  rating: {type: Number, default: 0},
 });
 
 const Routine = new Schema({
