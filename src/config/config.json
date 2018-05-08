@@ -10,7 +10,7 @@
   },
   "production": {
     "JWT_KEY": "3345678",
-    "JWT_TIMEOUT": "90000000",
+    "JWT_TIMEOUT": "600000",
     "SESSION_KEY": "55688",
     "SERVER_PORT": "3001",
     "GOOGLE_CLIENT_ID": "1048251713190-u99ejuqk1kl0mnpka2im0i6psbugeqba.apps.googleusercontent.com",
